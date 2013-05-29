@@ -9,11 +9,11 @@
     /// </summary>
     public class ZmqVersion
     {
-        private static readonly Lazy<ZmqVersion> CurrentVersion;
+        private static readonly ZmqVersion CurrentVersion;
 
         static ZmqVersion()
         {
-            CurrentVersion = new Lazy<ZmqVersion>(GetCurrentVersion);
+            CurrentVersion = GetCurrentVersion();
         }
 
         private ZmqVersion(int major, int minor, int patch)
@@ -28,7 +28,7 @@
         /// </summary>
         public static ZmqVersion Current
         {
-            get { return CurrentVersion.Value; }
+            get { return CurrentVersion; }
         }
 
         /// <summary>

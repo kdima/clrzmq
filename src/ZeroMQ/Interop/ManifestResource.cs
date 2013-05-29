@@ -6,6 +6,17 @@
 
     internal static class ManifestResource
     {
+        public static void CopyTo(this Stream input, Stream output)
+        {
+            byte[] buffer = new byte[32 * 1024]; 
+            int bytesRead;
+            while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, bytesRead);
+            }
+        }
+        
+
         public static bool Extract(string resourceName, string outputPath)
         {
             if (File.Exists(outputPath))

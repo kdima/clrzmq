@@ -158,7 +158,7 @@
         {
             if (disposing)
             {
-                Pulse.Dispose();
+                Pulse.Close();
             }
         }
 

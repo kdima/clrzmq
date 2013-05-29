@@ -1016,12 +1016,12 @@
 
         internal void InvokePollEvents(PollEvents readyEvents)
         {
-            if (readyEvents.HasFlag(PollEvents.PollIn))
+            if ((readyEvents & PollEvents.PollIn) == PollEvents.PollIn)
             {
                 InvokeReceiveReady(readyEvents);
             }
 
-            if (readyEvents.HasFlag(PollEvents.PollOut))
+            if ((readyEvents & PollEvents.PollOut) == PollEvents.PollOut)
             {
                 InvokeSendReady(readyEvents);
             }

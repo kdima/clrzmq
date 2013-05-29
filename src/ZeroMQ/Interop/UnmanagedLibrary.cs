@@ -16,7 +16,7 @@
     {
         private const string TraceCategory = "clrzmq[UnmanagedLibrary]";
 
-        private static readonly string CurrentArch = Environment.Is64BitProcess ? "x64" : "x86";
+        private static readonly string CurrentArch = "x64"; //todo check architecture of the OS
 
         private readonly string _systemFileName;
         private readonly string _extractedFileName;
@@ -35,7 +35,7 @@
                 throw new ArgumentNullException("fileName");
             }
 
-            if (string.IsNullOrWhiteSpace(fileName))
+            if (string.IsNullOrEmpty(fileName) || string.IsNullOrEmpty(fileName.Trim()))
             {
                 throw new ArgumentException("A valid file name is expected.", "fileName");
             }

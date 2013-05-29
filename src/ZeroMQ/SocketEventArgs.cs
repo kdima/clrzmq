@@ -17,8 +17,8 @@
             }
 
             this.Socket = socket;
-            this.ReceiveReady = readyEvents.HasFlag(PollEvents.PollIn);
-            this.SendReady = readyEvents.HasFlag(PollEvents.PollOut);
+            this.ReceiveReady = (readyEvents & PollEvents.PollIn) == PollEvents.PollIn;
+            this.SendReady = (readyEvents & PollEvents.PollOut) == PollEvents.PollOut;
         }
 
         /// <summary>
