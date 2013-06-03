@@ -6,6 +6,12 @@ namespace ZeroMQ.Interop
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
 
+    public static class LibData
+    {
+        public static string LibraryName = "libzmq";
+    }
+    
+
     // ReSharper disable InconsistentNaming
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Compatibility with native headers.")]
     [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1307:AccessibleFieldsMustBeginWithUpperCaseLetter", Justification = "Compatibility with native headers.")]
@@ -14,7 +20,7 @@ namespace ZeroMQ.Interop
     [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     internal static class LibZmq
     {
-        public const string LibraryName = "libzmq";
+        
 
         // From zmq.h (v3):
         // typedef struct {unsigned char _ [32];} zmq_msg_t;
@@ -45,7 +51,7 @@ namespace ZeroMQ.Interop
 
         static LibZmq()
         {
-            NativeLib = new UnmanagedLibrary(LibraryName);
+            NativeLib = new UnmanagedLibrary(LibData.LibraryName);
 
             AssignCommonDelegates();
             AssignCurrentVersion(out MajorVersion, out MinorVersion, out PatchVersion);
